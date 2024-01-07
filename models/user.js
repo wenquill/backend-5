@@ -1,15 +1,9 @@
 'use strict';
 const { Model, Op } = require('sequelize');
+const { GENDERS } = require('./../constants');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate (models) {
-      // define association here
-    }
+    static associate (models) {}
   }
   User.init(
     {
@@ -40,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       gender: {
         type: DataTypes.STRING,
         validate: {
-          isIn: [['male', 'female', 'other']],
+          isIn: [GENDERS],
         },
       },
       image: DataTypes.STRING,
