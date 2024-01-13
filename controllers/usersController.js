@@ -87,7 +87,13 @@ module.exports.updateUserById = async (req, res, next) => {
         .send([{ status: 404, title: 'User not found ):' }]);
     }
 
-    res.status(200).send({ data: updatedUser });
+    const preparedUser = _.omit(updatedUser, [
+      'passwHash',
+      'createdAt',
+      'updatedAt',
+    ]);
+
+    res.status(200).send({ data: preparedUser });
   } catch (err) {
     next(err);
   }
