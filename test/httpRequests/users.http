@@ -59,3 +59,31 @@ Content-Type: application/json
 {
     "birthday": "2025-11-26"
 }
+
+### update 200
+
+PUT http://localhost:5000/api/users/20
+Content-Type: application/json
+
+{
+    "firstName": "Judas",
+    "lastName": "Judu-a-a",
+    "email": "mail20@mail.com",
+    "passwHash": "wdew3dw3d",
+    "birthday": "2000-11-12",
+    "gender": "male"
+}
+
+### create 201
+
+PUT http://localhost:5000/api/users/212
+Content-Type: application/json
+
+{
+    "firstName": "Judas",
+    "lastName": "Judu-a-a",
+    "email": "mail21@mail.com",
+    "passwHash": "wdew3dw3d",
+    "birthday": "2000-11-12",
+    "gender": "male"
+}
