@@ -16,14 +16,13 @@ module.exports.createUser = async (req, res, next) => {
       return res.status(400).send('Something went wrong...');
     }
 
-    // delete password from returning object
     const preparedUser = _.omit(createdUser.get(), [
       'passwHash',
       'createdAt',
       'updatedAt',
     ]);
 
-    res.status(201).send(preparedUser);
+    res.status(201).send({ data: preparedUser });
   } catch (err) {
     next(err);
   }
