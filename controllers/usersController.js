@@ -59,7 +59,7 @@ module.exports.getUserById = async (req, res, next) => {
     if (!foundUser) {
       return res
         .status(404)
-        .send([{ status: 404, message: 'User not found ):' }]);
+        .send([{ status: 404, title: 'User not found ):' }]);
     }
 
     res.status(200).send({ data: foundUser });
@@ -68,6 +68,44 @@ module.exports.getUserById = async (req, res, next) => {
   }
 };
 
-module.exports.updateUserById = async (req, res, next) => {};
+module.exports.updateUserById = async (req, res, next) => {
+  const {
+    body,
+    params: { id },
+  } = req;
 
-module.exports.deleteUserById = async (req, res, next) => {};
+  try {
+    const [updatedUsersCount, [updatedUser]] = await User.update(body, {
+      where: { id },
+      raw: true,
+      returning: true,
+    });
+
+    if (!updatedUsersCount) {
+      return res
+        .status(404)
+        .send([{ status: 404, title: 'User not found ):' }]);
+    }
+
+    res.status(200).send({ data: updatedUser });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.deleteUserById = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const deletedUsersCount = await User.destroy({ where: { id } });
+    if (!deletedUsersCount) {
+      return res
+        .status(404)
+        .send([{ status: 404, title: 'User not found ):' }]);
+    }
+
+    res.status(204).end();
+  } catch (err) {
+    next(err);
+  }
+};

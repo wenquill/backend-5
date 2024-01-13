@@ -24,3 +24,38 @@ GET http://localhost:5000/api/users/17
 ### 404
 
 GET http://localhost:5000/api/users/2332
+
+### 204
+
+DELETE http://localhost:5000/api/users/17
+
+### 404
+
+DELETE http://localhost:5000/api/users/2332
+
+### 200
+
+PATCH http://localhost:5000/api/users/20
+Content-Type: application/json
+
+{
+    "lastName": "newDoe"
+}
+
+### 404
+
+PATCH http://localhost:5000/api/users/2332
+Content-Type: application/json
+
+{
+    "lastName": "newDoe"
+}
+
+### 500
+
+PATCH http://localhost:5000/api/users/20
+Content-Type: application/json
+
+{
+    "birthday": "2025-11-26"
+}
