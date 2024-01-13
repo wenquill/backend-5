@@ -2,10 +2,10 @@ POST http://localhost:5000/api/users
 Content-Type: application/json
 
 {
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "email": "mail12@mail.com",
-    "passwHash": "1990-20-11",
+    "firstName": "Add",
+    "lastName": "Dodddde",
+    "email": "mail15@mail.com",
+    "passwHash": "wdew3dw3d",
     "gender": "female"
 }
 
@@ -39,7 +39,7 @@ PATCH http://localhost:5000/api/users/20
 Content-Type: application/json
 
 {
-    "lastName": "newDoe"
+    "passwHash": "newDoe"
 }
 
 ### 404

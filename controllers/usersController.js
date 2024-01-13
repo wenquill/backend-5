@@ -1,4 +1,3 @@
-const { hashSync } = require('bcrypt');
 const _ = require('lodash');
 const { User } = require('./../models');
 
@@ -8,8 +7,6 @@ module.exports.createUser = async (req, res, next) => {
   const { body } = req;
 
   try {
-    // password hashing
-    body.passwHash = hashSync(body.passwHash, HASH_SALT);
     const createdUser = await User.create(body);
 
     if (!createdUser) {
