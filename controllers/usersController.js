@@ -31,14 +31,14 @@ module.exports.createUser = async (req, res, next) => {
 };
 
 module.exports.getUsers = async (req, res, next) => {
-  const { page = 1, results = 10 } = req.query;
+  const { limit, offset } = req.pagination;
 
   try {
     const foundUsers = await User.findAll({
       raw: true,
       attributes: { exclude: ['passwHash', 'createdAt', 'updatedAt'] },
-      limit: results,
-      offset: (page - 1) * results,
+      limit,
+      offset,
       order: ['id'],
     });
 
