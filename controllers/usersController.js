@@ -13,6 +13,8 @@ module.exports.createUser = async (req, res, next) => {
     const createdUser = await User.create(body);
 
     if (!createdUser) {
+      // потрібно помилки генерувати за допомогою createHttpErrors!!:
+      // next(createHttpErrors(400, 'Something went wrong'))
       return res.status(400).send('Something went wrong...');
     }
 
@@ -28,7 +30,23 @@ module.exports.createUser = async (req, res, next) => {
   }
 };
 
-module.exports.getUsers = async (req, res, next) => {};
+module.exports.getUsers = async (req, res, next) => {
+  const { page = 1, results = 10 } = req.query;
+
+  try {
+    const foundUsers = await User.findAll({
+      raw: true,
+      attributes: { exclude: ['passwHash', 'createdAt', 'updatedAt'] },
+      limit: results,
+      offset: (page - 1) * results,
+      order: ['id'],
+    });
+
+    res.status(200).send({ data: foundUsers });
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports.getUserById = async (req, res, next) => {};
 
