@@ -1,3 +1,68 @@
 ### 200
 
 GET http://localhost:5000/api/tasks
+
+### 201
+
+POST http://localhost:5000/api/tasks
+Content-Type: application/json
+
+{
+    "body": "my task",
+    "deadline": "2024-02-01",
+    "userId": 41
+}
+
+### 422
+
+POST http://localhost:5000/api/tasks
+Content-Type: application/json
+
+{
+    "body": "",
+    "deadline": "2024-02-01",
+    "userId": 41
+}
+
+### 200
+
+GET http://localhost:5000/api/tasks/2
+
+### 404
+
+GET http://localhost:5000/api/tasks/2222
+
+### 200
+
+PATCH http://localhost:5000/api/tasks/2
+Content-Type: application/json
+
+{
+    "body": "new task"
+}
+
+### 404
+
+PATCH http://localhost:5000/api/tasks/2222
+Content-Type: application/json
+
+{
+    "body": "new task"
+}
+
+### 422
+
+PATCH http://localhost:5000/api/tasks/2222
+Content-Type: application/json
+
+{
+    "body": ""
+}
+
+### 200
+
+DELETE http://localhost:5000/api/tasks/6
+
+### 404
+
+DELETE http://localhost:5000/api/tasks/2222
