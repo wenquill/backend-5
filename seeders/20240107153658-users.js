@@ -7,8 +7,8 @@ module.exports = {
       'users',
       [
         {
-          first_name: 'John1',
-          last_name: 'Doe1',
+          first_name: 'John',
+          last_name: 'Doe',
           email: 'mail1@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
@@ -17,8 +17,8 @@ module.exports = {
           updated_at: new Date().toISOString(),
         },
         {
-          first_name: 'John2',
-          last_name: 'Doe2',
+          first_name: 'Johnn',
+          last_name: 'Doee',
           email: 'mail2@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
@@ -27,8 +27,8 @@ module.exports = {
           updated_at: new Date().toISOString(),
         },
         {
-          first_name: 'John3',
-          last_name: 'Doe3',
+          first_name: 'Johnnn',
+          last_name: 'Doeee',
           email: 'mail3@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
@@ -37,8 +37,8 @@ module.exports = {
           updated_at: new Date().toISOString(),
         },
         {
-          first_name: 'John4',
-          last_name: 'Doe4',
+          first_name: 'Johnnnn',
+          last_name: 'Doeeee',
           email: 'mail4@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
@@ -47,8 +47,8 @@ module.exports = {
           updated_at: new Date().toISOString(),
         },
         {
-          first_name: 'John5',
-          last_name: 'Doe5',
+          first_name: 'Johnnnnn',
+          last_name: 'Doeeeee',
           email: 'mail5@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',

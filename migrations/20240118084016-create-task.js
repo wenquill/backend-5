@@ -1,4 +1,7 @@
 'use strict';
+
+const { Op } = require('sequelize');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -16,7 +19,7 @@ module.exports = {
       deadline: {
         type: Sequelize.DATEONLY,
       },
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -26,13 +29,35 @@ module.exports = {
         onDelete: 'RESTRICT',
         onUpdate: 'CASCADE',
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+    });
+
+    await queryInterface.addConstraint('tasks', {
+      fields: ['body'],
+      name: 'body-constraint',
+      type: 'check',
+      where: {
+        body: {
+          [Op.ne]: '',
+        },
+      },
+    });
+
+    await queryInterface.addConstraint('tasks', {
+      fields: ['deadline'],
+      name: 'deadline-constraint',
+      type: 'check',
+      where: {
+        deadline: {
+          [Op.gte]: Sequelize.literal('CURRENT_DATE'),
+        },
       },
     });
   },
