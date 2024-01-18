@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const { User } = require('./../models');
+const createHttpError = require('http-errors');
 
 const HASH_SALT = 10;
 
@@ -138,6 +139,29 @@ module.exports.updateOrCreateUser = async (req, res, next) => {
     ]);
 
     res.status(200).send({ data: preparedUser });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getUserTasks = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const foundUser = await User.findByPk(id);
+
+    if (!foundUser) {
+      return next(createHttpError(404, 'User not found'));
+    }
+
+    const foundTasks = await foundUser.getTasks({
+      raw: true,
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    });
+
+    res.status(200).send({ data: foundTasks });
   } catch (err) {
     next(err);
   }
