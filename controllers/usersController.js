@@ -11,9 +11,7 @@ module.exports.createUser = async (req, res, next) => {
     const createdUser = await User.create(body);
 
     if (!createdUser) {
-      // потрібно помилки генерувати за допомогою createHttpErrors!!:
-      // next(createHttpErrors(400, 'Something went wrong'))
-      return res.status(400).send('Something went wrong...');
+      return next(createHttpErrors(400, 'Something went wrong...'));
     }
 
     const preparedUser = _.omit(createdUser.get(), [
@@ -55,9 +53,7 @@ module.exports.getUserById = async (req, res, next) => {
     });
 
     if (!foundUser) {
-      return res
-        .status(404)
-        .send([{ status: 404, title: 'User not found ):' }]);
+      return next(createHttpErrors(404, 'User not found ):'));
     }
 
     res.status(200).send({ data: foundUser });
@@ -80,9 +76,7 @@ module.exports.updateUserById = async (req, res, next) => {
     });
 
     if (!updatedUsersCount) {
-      return res
-        .status(404)
-        .send([{ status: 404, title: 'User not found ):' }]);
+      return next(createHttpErrors(404, 'User not found ):'));
     }
 
     const preparedUser = _.omit(updatedUser, [
@@ -103,9 +97,7 @@ module.exports.deleteUserById = async (req, res, next) => {
   try {
     const deletedUsersCount = await User.destroy({ where: { id } });
     if (!deletedUsersCount) {
-      return res
-        .status(404)
-        .send([{ status: 404, title: 'User not found ):' }]);
+      return next(createHttpErrors(404, 'User not found );'));
     }
 
     res.status(204).end();
@@ -151,7 +143,7 @@ module.exports.getUserTasks = async (req, res, next) => {
     const foundUser = await User.findByPk(id);
 
     if (!foundUser) {
-      return next(createHttpError(404, 'User not found'));
+      return next(createHttpError(404, 'User not found ):'));
     }
 
     const foundTasks = await foundUser.getTasks({

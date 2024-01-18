@@ -15,9 +15,3 @@ tasksRouter
   .delete(tasksController.deleteTaskById);
 
 module.exports = tasksRouter;
-
-// post /api/tasks
-// get /api/tasks
-// get /api/tasks/:taskId
-// patch /api/tasks/:taskId
-// delete /api/tasks/:taskId
