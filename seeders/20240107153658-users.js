@@ -7,9 +7,9 @@ module.exports = {
       'users',
       [
         {
-          first_name: 'John',
-          last_name: 'Doe',
-          email: 'mail1@mail.com',
+          first_name: 'Asssss',
+          last_name: 'Dossse',
+          email: 'mail11@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
           gender: 'male',
@@ -19,7 +19,7 @@ module.exports = {
         {
           first_name: 'Johnn',
           last_name: 'Doee',
-          email: 'mail2@mail.com',
+          email: 'mail12@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
           gender: 'female',
@@ -29,7 +29,7 @@ module.exports = {
         {
           first_name: 'Johnnn',
           last_name: 'Doeee',
-          email: 'mail3@mail.com',
+          email: 'mail13@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
           gender: 'female',
@@ -39,7 +39,7 @@ module.exports = {
         {
           first_name: 'Johnnnn',
           last_name: 'Doeeee',
-          email: 'mail4@mail.com',
+          email: 'mail14@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
           gender: 'male',
@@ -49,7 +49,7 @@ module.exports = {
         {
           first_name: 'Johnnnnn',
           last_name: 'Doeeeee',
-          email: 'mail5@mail.com',
+          email: 'mail15@mail.com',
           birthday: '2000-10-20',
           passw_hash: '1234',
           gender: 'other',

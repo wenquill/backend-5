@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(64),
         allowNull: false,
         validate: {
-          is: /^[A-Z][a-z]+$/,
+          is: /^[A-Z][a-z]{1, 63}$/,
           len: [2, 64],
         },
       },
